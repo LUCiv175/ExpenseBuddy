@@ -6,7 +6,7 @@
     <title>ExpenseBuddy</title>
     <link rel="icon" 
       type="image/png" 
-      href="../content/logo.png" />
+      href="{{ url_for('static', filename='logo.png') }}"s/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
@@ -24,7 +24,7 @@
 </head>
 <body>
     <div class="homeNavbar">
-        <img src="../content/logo.png" alt="logo">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="logo">
     </div>
     <!--
     <script src="{{url_for('static', filename='app.js')}}"></script>-->
