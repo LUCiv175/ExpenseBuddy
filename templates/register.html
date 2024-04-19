@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
+    <title>ExpenseBuddy</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styleRegister.css')}}">
+</head>
+<body>
+    <!--navbar section start-->
+    <nav>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="logo">
+        </div>  
+        <div class="go-back">
+            <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='back.png') }}" alt=""></a>
+        </div>
+    </nav>
+    <!--navbar section end-->
+
+    <!--login section start-->
+    <div class="container">
+        <div class="box">
+            <h3 class="title">SignUp to ExpenseBuddy</h3>
+            <div class="username-area">
+                <h5 class="text">Username</h5>
+                <input type="text" name="input-username" id="#username">
+            </div>
+            <div class="mail-area">
+                <h5 class="text">Mail</h5>
+                <input type="text" name="input-mail" id="#mail">
+            </div>
+            <div class="password-area">
+                <h5 class="text">Password</h5>
+                <input type="password" name="input-password" id="#password">
+            </div>
+            <div class="repeat-password-area">
+                <h5 class="text">Repeat Password</h5>
+                <input type="password" name="input-repeat-password" id="#repeat-password">
+            </div>
+            <div class="register-btn">
+                <button>Register</button>
+                <h6>Have alredy an account?<a href="{{ url_for('login') }}">Click here</a></h6>
+            </div>
+        </div>
+    </div>
+    <!--login section end-->
+    
+    <!--
+    <script src="{{url_for('static', filename='app.js')}}"></script>-->
+</body>
+</html>

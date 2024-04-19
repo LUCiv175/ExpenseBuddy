@@ -6,9 +6,44 @@ app = Flask(__name__)
 
 
 
-@app.route("/")
-def hello_world():
-    return render_template("main.html")
+@app.route('/')
+def index():
+    return render_template('main.html')
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/home')
+def home():
+    return render_template('home.html')
+
+@app.route('/register')
+def register():
+    return render_template('register.html')
+
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
+
+@app.route('/show')
+def show():
+    return render_template('show.html')
+
+@app.route('/add')
+def add():
+    return render_template('add.html')
+
+@app.route('/categories')
+def categories():
+    return render_template('categories.html')
+
+@app.route('/export')
+def export():
+    return render_template('export.html')
+
+
+
 
 @app.route("/api/notes")
 def get_notes():
