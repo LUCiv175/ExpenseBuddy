@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='styleCategories.css')}}">
+    <title>Categories</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="logo">
+        </div>  
+        <div class="user">
+            <img src="{{ url_for('static', filename='user.png') }}" alt="user">
+        </div>
+    </nav>
+
+    <div class="father">
+        <div class="sidebar">
+            <div class="top">
+                    <ul>
+                        <li><a href="{{ url_for('add') }}">Add Expense</a></li>
+                        <li><a href="{{ url_for('show') }}">Show Graph</a></li>
+                        <li><a href="{{ url_for('categories') }}" class="green-link">Categories</a></li>
+                        <li><a href="{{ url_for('export') }}">Export Table</a></li>
+                    </ul>
+            </div>
+            <div class="logout">
+                <a href="{{ url_for('index') }}">Logout</a>
+            </div>
+        </div>
+
+        <div class="container">
+            <h1>Categories</h1>
+            <div class="categoriesBlock">
+
+                <div class="categoriesTitle">
+                    <p>Meals</p>
+                    
+                </div>
+                <div class="categoriesContents">
+                    <p>In this category, you can record all expenses related to meals, including lunches, dinners out, or grocery purchases. Keep track of your food expenses accurately to better manage your budget and find ways to save.</p>
+                </div>
+
+                <div class="categoriesTitle">
+                    <p>Transport</p>
+                    
+                </div>
+                <div class="categoriesContents">
+                    <p>In this category, you can record all expenses related to meals, including lunches, dinners out, or grocery purchases. Keep track of your food expenses accurately to better manage your budget and find ways to save.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    
+
+    
+    
+    
+</body>
+</body>
+</html>
