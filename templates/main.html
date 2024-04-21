@@ -12,16 +12,8 @@
       type="image/png" 
       href="{{ url_for('static', filename='logo.png') }}"/>
     </script>
-     
-
-     
-     <style>
-        #map{
-            height: 480px;
-        }
-     </style>
 </head>
-<body>
+<body style="overflow: hidden;">
     <nav>
         <div class="logo">
             <img src="{{ url_for('static', filename='logo.png') }}" alt="logo">
@@ -52,8 +44,8 @@
         <div class="block" id="grafico">
             <img src="https://www.cnabergamo.it/wp-content/uploads/2021/09/PICCOLA-50775754.jpg" alt="isto">
         </div>
-
     </div>
+    <div style="height: 500px; background-color: #d4d3d3;"></div>
     <!--
     <script src="{{url_for('static', filename='app.js')}}"></script>-->
 </body>

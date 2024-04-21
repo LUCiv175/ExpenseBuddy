@@ -27,6 +27,8 @@ nav{
 .go-back{
     margin-left: auto;
     cursor: pointer;
+}body{
+    overflow: hidden;
 }
 
 .container{
