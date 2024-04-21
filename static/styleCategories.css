@@ -1,0 +1,160 @@
+nav {
+    margin: 0;
+    padding: 0;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #D9D9D9;
+}
+
+html{
+    font-family: 'Patua One';
+    width: 100%;
+    height: 100%;
+    
+}
+ 
+/* Centering the logo */
+nav{
+    background-color: #BFBABA;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 11111;
+}
+ 
+.logo {
+    display: flex;
+    justify-content: left; /* Centra il logo orizzontalmente */
+    align-items: center; /* Centra il logo verticalmente */
+    flex: 1; /* Flessibilità per allargare il logo */
+}
+
+.user{
+    margin-left:auto;
+    cursor: pointer;
+    
+}
+nav{
+    background-color: #BFBABA;
+}
+
+.logo {
+    text-align: center;
+    padding: 20px 0; /* Adjust the padding as needed */
+}
+
+.logo img {
+    height: 15vh; /* Maintain aspect ratio */
+}
+.father{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.sidebar{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    width: 15dvw;
+    height: 80dvh;
+    background-color: #D2CFCF;
+    justify-content: start;
+    flex-direction: column;
+    
+}
+
+li{
+    margin: 0;
+    padding: 0;
+    margin-top: 3vh;
+    color: #2667FF;
+    margin-left: 2vw;
+}
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.top a{
+    color: #2667FF;
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-family: 'Patua One';
+    font-weight: 600;
+
+}
+
+.top{
+    margin-top: 20px;
+}
+.logout{
+    margin-top: 350px;
+    margin-left: 2vw;
+}
+.logout a{
+    color: #0B132B;
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-family: 'Patua One';
+    font-weight: 600;
+}
+.container{
+    border-radius: 10px;
+    display: flex;
+    margin: 30px;
+    padding: 0;
+    width: 80dvw;
+    height: 75dvh;
+    background-color: #fff;
+}
+
+a.green-link {
+    color: #35A52B;
+}
+
+.container h1{
+    margin-left: 1vw;
+}
+.container {
+    border-radius: 10px;
+    display: flex;
+    margin: 30px;
+    padding: 0;
+    width: 80vw; /* Correzione della dimensione del container */
+    height: 75vh; /* Correzione della dimensione del container */
+    background-color: #fff;
+    flex-direction: column; /* Imposta la direzione della flessione su colonna */
+}
+
+.categoriesBlock {
+    margin-top: 20px; /* Rimuovi il margin-top per allineare il blocco categoriesBlock direttamente sotto l'intestazione */
+    align-self: flex-start; /* Allinea il blocco categoriesBlock a sinistra */
+    width: auto; /* Imposta la larghezza automatica per adattarsi al contenuto */
+    max-width: 80%; /* Imposta una larghezza massima per il blocco */
+    margin-left: 20px; /* Aggiungi un margine sinistro per spostare il blocco a destra rispetto al bordo del container */
+}
+.categoriesTitle {
+    background-color: #35A52B; /* Colore di sfondo verde */
+    padding: 2px 20px; /* Imposta il padding per adattarsi al testo */
+    color: white; /* Colore del testo bianco */
+    display: inline-block;
+    font-weight: bold; /* Testo in grassetto */
+    border-radius: 30px; /* Bordi arrotondati */
+}
+
+.categoriesContents {
+    display: inline-block;
+
+    background-color: #D9D9D9; /* Colore di sfondo grigio */
+    padding: 5px; /* Padding per separare il contenuto dal bordo */
+    margin-top: 10px; /* Aggiunge spazio sopra il contenuto */
+    color: #8E8E8E; /* Colore del testo bianco */
+    border-radius: 30px;
+    width: 100%; /* Imposta la larghezza del contenuto al 100% */
+    box-sizing: border-box; /* Imposta il box-sizing per includere padding e bordi nel calcolo della larghezza */
+}
+
