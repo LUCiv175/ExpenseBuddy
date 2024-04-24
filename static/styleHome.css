@@ -337,8 +337,6 @@ body{
     width: 100%;
     display: flex;
     justify-content: center;
-    
-    
 }
 
 @media (max-width: 991px) {
@@ -358,6 +356,9 @@ body{
     }
     .cardBox{
         grid-template-columns: repeat(2, 1fr);
+    }
+    #liGrafico{
+        display: none;
     }
 }
 

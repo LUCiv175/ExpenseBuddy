@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
       
 </head>
-<body onload="loadDashboard()">
+<body onload="loadGraph()">
     <div class="container">
         
         <div class="navigation">
@@ -25,7 +25,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ url_for('home') }}">
                         <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                         <span class="title">Dashboard</span>
                     </a>
@@ -36,10 +36,10 @@
                         <span class="title">Aggiungi Spesa</span>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
+                <li >
+                    <a href=""> 
                         <span class="icon"><ion-icon name="analytics-outline"></ion-icon></span>
-                        <span class="title">Grafici</span>
+                        <span class="title">Grafico</span>
                     </a>
                 </li>
                 <li>
@@ -55,7 +55,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ url_for('logout') }}">
                         <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
                         <span class="title">Log Out</span>
                     </a>
@@ -69,39 +69,13 @@
                 <div class="toggle">
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
-                <div class="search">
-                    <label for="">
-                        <input type="text" placeholder="Cerca">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
-                </div>
                 <div class="user">
                     <ion-icon name="person"></ion-icon>
                 </div>
+                
             </div>
-            <div class="cardBox" id="cardBox"></div>
-
-        <div class="details">
-            <div class="graphBox">
-                <h2>Spese Mensili</h2>
-                <div class="box"><canvas id="myChart"></canvas></div>
-            </div>
-            <div class="recentExpense">
-                <div class="cardHeader">
-                    <h2>Spese Recenti</h2>
-                    <a href="#" class="btn">View All</a>
-                </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <td>Nome</td>
-                            <td>Costo</td>
-                            <td>Data</td>
-                            <td>Categoria</td>
-                        </tr>
-                    </thead>
-                    <tbody id="tableBox"></tbody>
-                </table>
+            <div class="graphBox" style="margin: 10px;">
+                <div class="box" style="min-height: 90dvh;"><canvas id="myChart"></canvas></div>
             </div>
         </div>
     </div>
@@ -117,6 +91,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script src="{{ url_for('static', filename='navigation.js') }}"></script>
-<script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+<script src="{{ url_for('static', filename='mostraGrafico.js') }}"></script>
 </body>
 </html>
