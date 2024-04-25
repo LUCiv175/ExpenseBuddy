@@ -198,146 +198,48 @@ body{
     color: var(--main-color);
 }
 
-.cardBox{
-    position: relative;
-    width: 100%;
+.content {
     padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 30px;
 }
 
-.cardBox .card{
-    position: relative;
-    background: var(--sixth-color);
-    padding: 30px;
-    border-radius: 20px;
-    display: flex;
-    justify-content: space-between;
-    cursor: pointer;
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-}
-.cardBox .card .numbers{
-    position: relative;
-    font-weight: 600;
-    font-size: 2.5em;
-    color: var(--main-color);
-}
-.cardBox .card .cardName{
-    font-size: 1.1em;
-    margin-top: 5px;
-    color: black;
-}
-.cardBox .card .iconBox{
-    font-size: 3.5em;
-    color: var(--fourth-color);
-
-}
-.cardBox .card:hover{
-    background: var(--second-color);
+h2 {
+    font-weight: bold; /* Rendi il titolo in grassetto */
+    margin-bottom: 20px; /* Aggiungi spazio sotto il titolo */
 }
 
-.cardBox .card:hover .numbers,
-.cardBox .card:hover .cardName,
-.cardBox .card:hover .iconBox{
-    color: var(--fourth-color);
+.form-group {
+    margin-bottom: 20px;
 }
 
-.details{
-    position: relative;
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"] {
     width: 100%;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-gap: 30px;
-}
-.details .recentExpense{
-    position: relative;
-    display: grid;
-    min-height: 500px;
-    background: var(--sixth-color);
-    padding: 20px;
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-    border-radius: 20px;
-}
-
-.cardHeader{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-.cardHeader h2{
-    font-weight: 700;
-    color: var(--main-color);
-}
- 
-.btn{
-    position: relative;
-    padding: 5px 10px;
-    background: var(--main-color);
-    text-decoration: none;
-    color: var(--sixth-color);
-    border-radius: 6px;
-}
-.details table{
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-.details table thead td{
-    font-weight: 600;
-}
-.details .recentExpense table tr{
-    color: black;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-.details .recentExpense table tr:last-child{
-    border-bottom: none;
-}
-.details .recentExpense table tbody tr:hover{
-    background: var(--second-color);
-    color: var(--fourth-color);
-}
-
-.details .recentExpense table tr td{
-    text-align: start;
     padding: 10px;
-}
-.details .recentExpense table tr td:nth-child(2){
-    text-align: end;
-}
-.details .recentExpense table tr td:nth-child(3), .details .recentExpense table tr td:last-child{
-    text-align: center;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.graphBox{
-    /*
-    position: absolute;
-    width: 100%;*/
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-
-    min-height: 500px;
-    height: 100%;
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-    border-radius: 20px;
-}
-.graphBox h2{
-    font-weight: 700;
-    color: var(--main-color);
-    text-align: center;
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.graphBox .box{
-    position: relative;
-    background: var(--sixth-color);
-    padding: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+button:hover {
+    background-color: var(--second-color);
 }
+
 
 @media (max-width: 991px) {
     .navigation{
@@ -354,30 +256,11 @@ body{
     .main.active{
         left: 300px;
     }
-    .cardBox{
-        grid-template-columns: repeat(2, 1fr);
-    }
-    #liGrafico{
-        display: none;
-    }
-}
-
-@media (max-width:768px){
-    .details{
-        grid-template-columns: repeat(1, 1fr);
-    }
-    .recentExpense{
-        overflow-x: auto;
-    }
+    
 }
 
 @media (max-width:480px){
-    .cardBox{
-        grid-template-columns: repeat(1, 1fr);
-    }
-    .cardHeader h2{
-        font-size: 20px;
-    }
+    
     .user{
         min-width: 40px;
     }
