@@ -95,6 +95,24 @@ def loginForm():
     else:
         return {"status": "error"}
     
+@app.route("/addExpense", methods=['POST'])
+def addExpense():
+    if 'user' not in session:
+        return {"status": "error"}
+    else:
+        data = request.json
+        nome = data["nome"]
+        costo = data["costo"]
+        categoria = data["categoria"]
+        date = data["date"]
+        id = session['user']
+        db = sq.connect("data.db")
+        cursor = db.cursor()
+        cursor.execute("INSERT INTO spesa (nome, valore, dataSpesa, fkCategoria, fkUtente) VALUES (?, ?, ?, ?, ?)", (nome, costo, date, categoria, id))
+        db.commit()
+        db.close()
+        return {"status": "ok"}
+    
 @app.route("/registerForm", methods=['POST'])
 def registerForm():
     data = request.json
@@ -131,7 +149,7 @@ def get_total_expense_yearly():
         id = session['user']
         db = sq.connect("data.db")
         cursor = db.cursor()
-        query = "SELECT SUM(valore) FROM spesa WHERE fkUtente=" + str(id) + " and STRFTIME('%Y', CURRENT_DATE) = STRFTIME('%Y', dataSpesa);"
+        query = "SELECT ROUND(SUM(valore), 2) FROM spesa WHERE fkUtente=" + str(id) + " and STRFTIME('%Y', CURRENT_DATE) = STRFTIME('%Y', dataSpesa);"
         cursor.execute(query)
         data = cursor.fetchall()
         db.close()
@@ -145,7 +163,7 @@ def get_total_expense_by_year_and_month():
         id = session['user']
         db = sq.connect("data.db")
         cursor = db.cursor()
-        query = "Select STRFTIME('%m', dataSpesa) as mese, STRFTIME('%Y', dataSpesa) as anno,  SUM(valore) as totale from spesa where fkUtente=" + str(id) + " group by anno, mese;"
+        query = "Select STRFTIME('%m', dataSpesa) as mese, STRFTIME('%Y', dataSpesa) as anno,  ROUND(SUM(valore), 2) as totale from spesa where fkUtente=" + str(id) + " group by anno, mese;"
         cursor.execute(query)
         data = cursor.fetchall()
         db.close()
