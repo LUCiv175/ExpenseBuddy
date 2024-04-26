@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
 </head>
-<body onload="loadDashboard()">
+<body onload="loadCategories()">
     <div class="container">
         
         <div class="navigation">
@@ -79,7 +79,7 @@
                 <form id="addForm">
                     <div class="form-group">
                         <label for="costo">Costo:</label>
-                        <input type="number" id="costo" name="costo"  min=0 required>
+                        <input type="number" id="costo" name="costo"  min=0.1 step="0.01" data-type="currency" required>
                     </div>
                     <div class="form-group">
                         <label for="nome">Nome:</label>
@@ -87,7 +87,12 @@
                     </div>
                     <div class="form-group">
                         <label for="categoria">Categoria:</label>
-                        <input type="text" id="categoria" name="categoria" required>
+                        <!--<input type="text" id="categoria" name="categoria" required>
+                            select -->
+                        <select id="categoria" name="categoria" required>
+                            <option value="" disabled selected>Seleziona una categoria</option>
+                        </select>
+                        
                     </div>
                     <div class="form-group">
                         <label for="data">Data:</label>
@@ -104,6 +109,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script src="{{ url_for('static', filename='navigation.js') }}"></script>
-<script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+<script src="{{ url_for('static', filename='add.js') }}"></script>
 </body>
 </html>
