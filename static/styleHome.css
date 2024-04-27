@@ -122,9 +122,8 @@ body{
     top: 0;
     left: 300px;
     width: calc(100% - 300px);
-    min-height: 100vh;
+    min-height: 100dvh;
     background: var(--sixth-color);
-    
     transition: 0.5s;
 }
 .main.active{
@@ -250,6 +249,7 @@ body{
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-gap: 30px;
+    transition: 0.5s;
 }
 .details .recentExpense{
     position: relative;
@@ -259,6 +259,7 @@ body{
     padding: 20px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
+    transition: 0.5s;
 }
 
 .cardHeader{
@@ -323,11 +324,13 @@ body{
     height: 100%;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
+    transition: 0.5s;
 }
 .graphBox h2{
     font-weight: 700;
     color: var(--main-color);
     text-align: center;
+    transition: 0.5s;
 }
 
 .graphBox .box{
@@ -337,6 +340,19 @@ body{
     width: 100%;
     display: flex;
     justify-content: center;
+    transition: 0.5s;
+}
+.recentExpense.active {
+    width: 100%;
+}
+
+.graphBox.active{
+    position: absolute;
+    left: -100%;
+}
+.details.active{
+    width: 100%;
+    display: flex;
 }
 
 @media (max-width: 991px) {

@@ -8,7 +8,8 @@ CREATE TABLE utente (
 CREATE TABLE categoria (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome VARCHAR(255),
-    descrizione VARCHAR(500)
+    descrizione text,
+    icona VARCHAR(255)
 );
  
 CREATE TABLE spesa (

@@ -213,7 +213,20 @@ def get_last_expense():
         db.close()
         print(id)
         return data
-
+@app.route("/viewAll", methods=['GET'])
+def get_all_expense():
+    if 'user' not in session:
+        return {"status": "error"}
+    else:
+        id = session['user']
+        db = sq.connect("data.db")
+        cursor = db.cursor()
+        query = "SELECT spesa.nome, valore, dataSpesa, c.nome FROM spesa join categoria c on c.id=spesa.fkCategoria WHERE spesa.fkUtente="+str(id)+"   Order by dataSpesa DESC;"
+        cursor.execute(query)
+        data = cursor.fetchall()
+        db.close()
+        return data
+    
 @app.route("/getCategorie", methods=['GET'])
 def get_categorie():
     db = sq.connect("data.db")
