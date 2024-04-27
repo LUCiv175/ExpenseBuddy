@@ -2,6 +2,8 @@ import hashlib
 from flask import Flask, render_template, request, redirect, session
 from flask_session import Session
 import sqlite3 as sq
+from mindee import Client, PredictResponse, product
+import os;
 
 app = Flask(__name__)
 
@@ -10,6 +12,46 @@ app = Flask(__name__)
 app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
 
+
+
+@app.route('/scanPhoto' , methods=['POST'])
+def scan_photo():
+    
+    file = request.files['file']
+
+
+    if file.filename == '':
+        return {"status": "error"}
+
+    # Salva il file nella cartella desiderata
+    upload_folder = 'img'
+    if not os.path.exists(upload_folder):
+        os.makedirs(upload_folder)
+    
+    file.save(os.path.join(upload_folder, file.filename))
+
+    # Init a new client
+    mindee_client = Client(api_key="")
+
+    # Load a file from disk
+    filepath = os.path.join(upload_folder, file.filename)
+    
+    input_doc = mindee_client.source_from_path(filepath)
+    # Load a file from disk and parse it.
+    # The endpoint name must be specified since it cannot be determined from the class.
+    result: PredictResponse = mindee_client.parse(product.ReceiptV5, input_doc)
+
+    # Print a summary of the API result
+    #print(result.document)
+    # Print the date
+    date = str(result.document.inference.prediction.date)
+    # Print the total amount
+    totalAmount = str(result.document.inference.prediction.total_amount)
+    #encode in json
+    data = {"date": date, "totalAmount": totalAmount}
+    #remove the image
+    os.remove(filepath)
+    return data
 
 
 @app.route('/')
@@ -33,6 +75,13 @@ def profile():
         return redirect("/login")
     else:
         return render_template('profile.html')
+    
+@app.route('/scan')
+def scan():
+    if 'user' not in session:
+        return redirect("/login")
+    else:
+        return render_template('scan.html')
 
 @app.route('/show')
 def show():
