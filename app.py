@@ -14,7 +14,7 @@ Session(app)
 
 @app.route('/')
 def index():
-    return render_template('main.html')
+    return render_template('main2.html')
 
 @app.route('/login')
 def login():

@@ -183,6 +183,8 @@ body{
     border-radius: 50%;
     overflow: hidden;
     cursor: pointer;
+    opacity:0;
+    pointer-events: none;
 }
 
 .user ion-icon{
