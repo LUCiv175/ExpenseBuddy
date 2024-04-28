@@ -22,7 +22,7 @@ const viewAll = () => {
             td1.innerHTML = expense[0];
             tr.appendChild(td1);
             const td2 = document.createElement('td');
-            td2.innerHTML = expense[1] + '€';
+            td2.innerHTML = (Math.round(expense[1] * 100) / 100).toFixed(2) + '€';
             tr.appendChild(td2);
             const td3 = document.createElement('td');
             td3.innerHTML = expense[2];
@@ -45,7 +45,7 @@ const viewAll = () => {
             td1.innerHTML = expense[0];
             tr.appendChild(td1);
             const td2 = document.createElement('td');
-            td2.innerHTML = expense[1] + '€';
+            td2.innerHTML = (Math.round(expense[1] * 100) / 100).toFixed(2) + '€';
             tr.appendChild(td2);
             const td3 = document.createElement('td');
             td3.innerHTML = expense[2];

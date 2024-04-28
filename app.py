@@ -31,7 +31,7 @@ def scan_photo():
     file.save(os.path.join(upload_folder, file.filename))
 
     # Init a new client
-    mindee_client = Client(api_key="")
+    mindee_client = Client(api_key="5244a0cbfe280317e542e1c26d926277")
 
     # Load a file from disk
     filepath = os.path.join(upload_folder, file.filename)
@@ -69,13 +69,6 @@ def home():
     else:
         return redirect("/login")
 
-@app.route('/profile')
-def profile():
-    if 'user' not in session:
-        return redirect("/login")
-    else:
-        return render_template('profile.html')
-    
 @app.route('/scan')
 def scan():
     if 'user' not in session:

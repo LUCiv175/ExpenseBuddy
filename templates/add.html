@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add</title>
+    <title>Aggiungi</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styleAdd.css') }}">
 
     <link rel="icon" 
@@ -19,23 +19,29 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="" style="pointer-events: none;">
                         <span class="icon"><img src="{{ url_for('static', filename='logo2.png') }}" alt=""></span>
                         <span class="title">ExpenseBuddy</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="{{ url_for('home') }}">
                         <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="" style="pointer-events: none;">
                         <span class="icon"><ion-icon name="add-outline"></ion-icon></span>
                         <span class="title">Aggiungi Spesa</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ url_for('scan') }}">
+                        <span class="icon"><ion-icon name="scan-outline"></ion-icon></span>
+                        <span class="title">Scansiona</span>
+                    </a>
+                <li>
                 <li>
                     <a href="{{ url_for('show') }}" id="liGrafico">
                         <span class="icon"><ion-icon name="analytics-outline"></ion-icon></span>
@@ -43,13 +49,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ url_for('categories') }}">
                         <span class="icon"><ion-icon name="albums-outline"></ion-icon></span>
                         <span class="title">Categorie</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ url_for('export') }}">
                         <span class="icon"><ion-icon name="download-outline"></ion-icon></span>
                         <span class="title">Esporta Tabella</span>
                     </a>
@@ -69,7 +75,7 @@
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
                 
-                <div class="user">
+                <div class="user" style="opacity: 0;pointer-events: none;">
                     <ion-icon name="person"></ion-icon>
                 </div>
             </div>
