@@ -1,4 +1,5 @@
 const ctx = document.getElementById('myChart');
+
 const loadCards = () =>{
     fetch('/totalExpensesYearly')
     .then(response => response.json())
@@ -9,7 +10,7 @@ const loadCards = () =>{
         const div = document.createElement('div');
         const numbers = document.createElement('div');
         numbers.className = 'numbers';
-        numbers.innerHTML = dati[0] +'€';
+        numbers.innerHTML = (Math.round(dati[0] * 100) / 100).toFixed(2) +'€';
         const cardName = document.createElement('div');
         cardName.className = 'cardName';
         cardName.innerHTML = 'Totale Spesa Annuale';
@@ -33,7 +34,7 @@ const loadCards = () =>{
         const div = document.createElement('div');
         const numbers = document.createElement('div');
         numbers.className = 'numbers';
-        numbers.innerHTML = dati[0] +'€';
+        numbers.innerHTML = (Math.round(dati[0] * 100) / 100).toFixed(2) +'€';
         const cardName = document.createElement('div');
         cardName.className = 'cardName';
         cardName.innerHTML = 'Totale Spesa Mensile';
@@ -57,7 +58,7 @@ const loadCards = () =>{
         const div = document.createElement('div');
         const numbers = document.createElement('div');
         numbers.className = 'numbers';
-        numbers.innerHTML = dati[0]  +'€';
+        numbers.innerHTML = (Math.round(dati[0] * 100) / 100).toFixed(2)  +'€';
         const cardName = document.createElement('div');
         cardName.className = 'cardName';
         cardName.innerHTML = 'Totale Spese';
@@ -111,7 +112,7 @@ const loadTable = () =>{
             td1.innerHTML = expense[0];
             tr.appendChild(td1);
             const td2 = document.createElement('td');
-            td2.innerHTML = expense[1] + '€';
+            td2.innerHTML = (Math.round(expense[1] * 100) / 100).toFixed(2) + '€';
             tr.appendChild(td2);
             const td3 = document.createElement('td');
             td3.innerHTML = expense[2];

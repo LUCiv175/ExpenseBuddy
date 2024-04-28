@@ -19,7 +19,7 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="#" style="pointer-events: none;">
                         <span class="icon"><img src="{{ url_for('static', filename='logo2.png') }}" alt=""></span>
                         <span class="title">ExpenseBuddy</span>
                     </a>
@@ -31,25 +31,31 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ url_for('add') }}">
                         <span class="icon"><ion-icon name="add-outline"></ion-icon></span>
                         <span class="title">Aggiungi Spesa</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ url_for('scan') }}">
+                        <span class="icon"><ion-icon name="scan-outline"></ion-icon></span>
+                        <span class="title">Scansiona</span>
+                    </a>
+                <li>
                 <li >
-                    <a href=""> 
+                    <a href="" style="pointer-events: none;"> 
                         <span class="icon"><ion-icon name="analytics-outline"></ion-icon></span>
                         <span class="title">Grafico</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ url_for('categories') }}">
                         <span class="icon"><ion-icon name="albums-outline"></ion-icon></span>
                         <span class="title">Categorie</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ url_for('export') }}">
                         <span class="icon"><ion-icon name="download-outline"></ion-icon></span>
                         <span class="title">Esporta Tabella</span>
                     </a>
@@ -69,7 +75,7 @@
                 <div class="toggle">
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
-                <div class="user">
+                <div class="user" style="opacity: 0;pointer-events: none;">
                     <ion-icon name="person"></ion-icon>
                 </div>
                 
