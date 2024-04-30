@@ -39,8 +39,9 @@
   }
 
   .nav-bar img{
-    width: 8vw;
-    height: 15vh;
+    width: 10%; /* Imposta la larghezza al 100% del contenitore */
+    height: 10%;
+    
   }
   .nav-items > a {
     text-decoration: none;
@@ -66,30 +67,30 @@
   }
   
   .hero-img-container > img {
-    width: 50%; /* Imposta la dimensione delle immagini al 50% del contenitore */
+    width: 60%; /* Imposta la dimensione delle immagini al 50% del contenitore */
     height: auto; /* Imposta l'altezza automaticamente in base alla larghezza */
     position: absolute;
   }
   
   .hero-img-container > img:nth-child(1) {
-    top: 6%;
-    left: 15%;
+    top: 20%;
+    left: 30%;
   }
   
   .hero-img-container > img:nth-child(2) {
-    top: 10%; 
-    right: 75%; /* Muovi a sinistra rispetto al centro */
+    top: 25%; 
+    right:60%; /* Muovi a sinistra rispetto al centro */
   }
   
   .hero-img-container > img:nth-child(3) {
-    bottom: 10%;
-    right: 35%;
+    bottom: 25%;
+    right: 0;
     
   }
   
   .hero-img-container > img:nth-child(4) {
-    top: 30%; /* Allinea con img:nth-child(1) */
-    left: 55%; /* Allinea con img:nth-child(1) */
+    top: 25%; /* Allinea con img:nth-child(1) */
+    left: 50%; /* Allinea con img:nth-child(1) */
   }
   
   
@@ -114,22 +115,25 @@
     font-weight: 700;
   }
   .hero-text-container > button {
-    padding: 12px 28px;
+    padding: 16px 32px; /* Aumenta le dimensioni del pulsante */
     border: none;
     outline-width: 0;
     color: white;
-    border-radius: 24px;
+    border-radius: 32px; /* Aumenta il raggio del bordo per ottenere un aspetto più arrotondato */
     cursor: pointer;
     font-weight: 400;
-    background-color : var(--main-color);
-    transition: 0.5s;  
+    background-color: var(--main-color);
+    transition: 0.5s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Aggiunge un'ombra */  
   }
 
   .hero-text-container > button:hover{
     background-color: transparent;
     color: var(--fourth-color);
-    border: 2px solid var(--fourth-color);
+    border: 1px solid var(--fourth-color);
     transition: 0.5s;
+    transform: scale(1.05); /* Effetto di ingrandimento al passaggio del mouse */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   }
 
   .container {
@@ -262,4 +266,55 @@
   }
   
 
+  @media screen and (max-width: 768px) {
+    .nav-bar {
+      flex-direction: column;
+      text-align: center;
+    }
+    .nav-items > a {
+      margin: 10px 0;
+    }
   
+    .hero-section {
+      flex-direction: column;
+      text-align: center;
+      height: auto;
+    }
+    .hero-img-container {
+      display: none; 
+    }
+  
+    .hero-text-container {
+      margin-right: 0;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .why-us {
+      text-align: center;
+    }
+  
+    .features-section {
+      flex-direction: column;
+      align-items: center;
+    }
+    .feature-item {
+      margin-right: 0;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+  
+    .footer-container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .menu {
+      margin-bottom: 20px;
+    }
+
+    .hero-text-container > p,
+    .hero-text-container > button {
+        margin-top: 30px; /* Aggiunge un margine sopra il paragrafo e il pulsante */
+    }
+  }
