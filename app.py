@@ -31,7 +31,7 @@ def scan_photo():
     file.save(os.path.join(upload_folder, file.filename))
 
     # Init a new client
-    mindee_client = Client(api_key="5244a0cbfe280317e542e1c26d926277")
+    mindee_client = Client(api_key="")
 
     # Load a file from disk
     filepath = os.path.join(upload_folder, file.filename)
@@ -56,7 +56,7 @@ def scan_photo():
 
 @app.route('/')
 def index():
-    return render_template('main2.html')
+    return render_template('main.html')
 
 @app.route('/login')
 def login():
