@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Export</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleExport.css') }}">
+    <link rel="icon" 
+      type="image/png" 
+      href="{{ url_for('static', filename='logo2.png') }}"/>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
+      
+</head>
+<body onload="viewAll()">
+    <div class="container">
+        
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon"><img src="{{ url_for('static', filename='logo2.png') }}" alt=""></span>
+                        <span class="title">ExpenseBuddy</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('home') }}">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('add') }}">
+                        <span class="icon"><ion-icon name="add-outline"></ion-icon></span>
+                        <span class="title">Aggiungi Spesa</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('show') }}" id="liGrafico">
+                        <span class="icon"><ion-icon name="analytics-outline"></ion-icon></span>
+                        <span class="title">Grafico</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('categories') }}">
+                        <span class="icon"><ion-icon name="albums-outline"></ion-icon></span>
+                        <span class="title">Categorie</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('export') }}">
+                        <span class="icon"><ion-icon name="download-outline"></ion-icon></span>
+                        <span class="title">Esporta Tabella</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('logout') }}">
+                        <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                        <span class="title">Log Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="main">
+            
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+            </div>
+            
+
+        <div class="details">
+            
+            <div class="recentExpense">
+                <div class="cardHeader">
+                    <h2 class="table-title">Spese</h2>
+                    
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Nome</td>
+                            <td>Costo</td>
+                            <td>Data</td>
+                            <td>Categoria</td>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBox"></tbody>
+                </table>
+            </div>
+        </div>
+        <a href="/download"><button class="btn">Scarica il documento</button></a>
+    </div>
+    </div>
+    
+</div>
+
+<script>
+    const viewAll = () => {
+    fetch('/viewAll')
+        .then(response => response.json())
+        .then(data => {
+            const tableBox = document.getElementById('tableBox');
+            tableBox.innerHTML = ''; // Cancella il contenuto attuale della tabella
+            
+            data.forEach(expense => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${expense[0]}</td>
+                    <td>${expense[1]}</td>
+                    <td>${expense[2]}</td>
+                    <td>${expense[3]}</td>
+                `;
+                tableBox.appendChild(row); // Aggiunge la riga alla tabella
+            });
+        })
+        .catch(error => console.error('Errore durante il recupero delle spese:', error));
+}
+</script>
+
+<!-- Includi altri script JavaScript -->
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{{ url_for('static', filename='navigation.js') }}"></script>
+<script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+<script src="{{ url_for('static', filename='viewAll.js') }}"></script>
+</body>
+</html>

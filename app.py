@@ -1,14 +1,38 @@
 import hashlib
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, send_file
 from flask_session import Session
+from openpyxl import Workbook
 import sqlite3 as sq
 
 app = Flask(__name__)
 
-
-app = Flask(__name__)
 app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
+
+dati_note_spese = []  # Definizione della variabile globale per le note spese
+
+# Funzione per scaricare il documento XLSX
+@app.route('/download', methods=['GET'])
+def download_file():
+    # Crea un nuovo file XLSX e aggiungi i dati delle spese
+    wb = Workbook()
+    ws = wb.active
+    ws.append(["Data", "Descrizione", "Importo"])
+
+    # Ottenere i dati delle spese dal database e aggiungerli al foglio di lavoro
+    db = sq.connect("data.db")
+    cursor = db.cursor()
+    cursor.execute("SELECT dataSpesa, nome, valore FROM spesa WHERE fkUtente=?", (session['user'],))
+    spese = cursor.fetchall()
+    for spesa in spese:
+        ws.append(spesa)
+
+    # Salva il file XLSX temporaneamente sul server
+    filename = 'note_spese.xlsx'
+    wb.save(filename)
+
+    # Invia il file al client per il download
+    return send_file(filename, as_attachment=True)
 
 
 
@@ -225,6 +249,8 @@ def get_all_expense():
         cursor.execute(query)
         data = cursor.fetchall()
         db.close()
+        #lista note speses
+        dati_note_spese = data
         return data
     
 @app.route("/getCategorie", methods=['GET'])
