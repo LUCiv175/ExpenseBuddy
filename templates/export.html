@@ -37,6 +37,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ url_for('scan') }}">
+                        <span class="icon"><ion-icon name="scan-outline"></ion-icon></span>
+                        <span class="title">Scansiona</span>
+                    </a>
+                <li>
+                <li>
                     <a href="{{ url_for('show') }}" id="liGrafico">
                         <span class="icon"><ion-icon name="analytics-outline"></ion-icon></span>
                         <span class="title">Grafico</span>
@@ -109,7 +115,7 @@
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${expense[0]}</td>
-                    <td>${expense[1]}</td>
+                    <td>${(Math.round(expense[1] * 100) / 100).toFixed(2) + '€'}</td>
                     <td>${expense[2]}</td>
                     <td>${expense[3]}</td>
                 `;
