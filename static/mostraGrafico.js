@@ -76,7 +76,7 @@ fetch('/totalExpensesbyYearandMonth')
           scales: {
             y: { // defining min and max so hiding the dataset does not change scale range
               min: 0,
-              max: 100
+              max: 1000
             }
           }
         }

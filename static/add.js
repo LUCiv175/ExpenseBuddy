@@ -79,3 +79,8 @@ addForm.addEventListener("submit", async (e) => {
         alert(data.message);
     }
 });
+const inputData = document.querySelector("#data")
+var today = new Date().toISOString().split('T')[0];
+  
+  // Imposta la data massima come quella odierna
+  inputData.max = today;

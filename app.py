@@ -137,7 +137,7 @@ def get_expense_by_categories():
         id = session['user']
         db = sq.connect("data.db")
         cursor = db.cursor()
-        query = "SELECT c.nome, SUM(s.valore) FROM spesa s JOIN categoria c ON c.id=s.fkCategoria WHERE s.fkUtente=" + str(id) + " GROUP BY c.nome;"
+        query = "SELECT c.nome, SUM(s.valore) FROM spesa s JOIN categoria c ON c.id=s.fkCategoria WHERE s.fkUtente=" + str(id) + " and STRFTIME('%m-%Y', CURRENT_DATE) = STRFTIME('%m-%Y', s.dataSpesa) GROUP BY c.nome;"
         cursor.execute(query)
         data = cursor.fetchall()
         db.close()

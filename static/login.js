@@ -1,6 +1,8 @@
 const inputs = document.querySelectorAll(".input-field");
 const toggle_btn = document.querySelectorAll(".toggle");
 const main = document.querySelector("main");
+const toast = document.querySelector(".toast");
+const text = document.querySelector(".text.text-2");
 
 inputs.forEach((inp) => {
   inp.addEventListener("focus", () => {
@@ -24,14 +26,13 @@ loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const email = document.querySelector("#email").value;
   const password = document.querySelector("#password").value;
-  //check the email
-    if (!email || !email.includes("@")) {
-        alert("Please enter a valid email");
-        return;
-    }
     //check the password
     if (!password || password.length < 6 || password.length > 20) {
-        alert("Please enter a valid password");
+        toast.style.display = "block";
+        text.innerHTML = "Password non valida!"
+        setTimeout(function() {
+          toast.style.display = "none";
+        }, 4000)
         return;
     }
     
@@ -48,7 +49,11 @@ loginForm.addEventListener("submit", async (e) => {
   if (data.status === "ok") {
     window.location.href = "/home";
   } else {
-    alert(data.message);
+    toast.style.display = "block";
+    text.innerHTML = "Credenziali non valide!"
+    setTimeout(function() {
+      toast.style.display = "none";
+    }, 4000)
   }
 });
 
@@ -66,12 +71,21 @@ registerForm.addEventListener("submit", async (e) => {
     }
     //check the password
     if (!password || password.length < 6 || password.length > 20) {
-        alert("Please enter a valid password");
+        toast.style.display = "block";
+        text.innerHTML = "Password non valida!"
+        setTimeout(function() {
+            toast.style.display = "none";
+          }, 4000)
         return;
     }
     //check the name
     if (!name || name.length < 3 || name.length > 20) {
-        alert("Please enter a valid name");
+      text.innerHTML = "Nome non valido!"
+        toast.style.display = "block";
+        
+        setTimeout(function() {
+          toast.style.display = "none";
+        }, 4000)
         return;
     }
   

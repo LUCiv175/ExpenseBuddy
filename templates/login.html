@@ -11,7 +11,24 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styleLogin.css') }}" />
   </head>
   <body>
-    <main><div class="back"><a href="{{ url_for('index') }}"><ion-icon name="arrow-back-circle-outline"></ion-icon></div></a>
+    <main>
+      <div class="toast active" style="display: none;">
+  
+        <div class="toast-content">
+          <i class="fas fa-solid fa-check check"></i>
+      
+          <div class="message">
+            <span class="text text-1">Errore</span>
+            <span class="text text-2"></span>
+          </div>
+        </div>
+        <i class="fa-solid fa-xmark close"></i>
+      
+        <!-- Remove 'active' class, this is just to show in Codepen thumbnail -->
+        <div class="progress active"></div>
+      </div>
+    
+      <div class="back"><a href="{{ url_for('index') }}"><ion-icon name="arrow-back-circle-outline"></ion-icon></div></a>
       <div class="box">
         <div class="inner-box">
           <div class="forms-wrap">
