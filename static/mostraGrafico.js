@@ -6,7 +6,7 @@ fetch('/totalExpensesbyYearandMonth')
 .then(dati => {
     //replace the number of the month with the name of the month
     dati.forEach(d => {
-        console.log(d[0]);
+        //console.log(d[0]);
         switch(d[0]){
             case '01':
                 d[0] = 'Gennaio';

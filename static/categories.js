@@ -5,7 +5,7 @@ const loadCards = () =>{
     .then(categorie => {
         let count = 1
         categorie.forEach(element => {
-            console.log(element)
+            //console.log(element)
             var nuovoElementoDiv = document.createElement("div");
             nuovoElementoDiv.id = "slide-" + count++;
             nuovoElementoDiv.className = "boxing";

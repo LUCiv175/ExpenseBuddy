@@ -415,7 +415,7 @@ body{
     scroll-snap-type: x mandatory;
     max-width: var(--slide-width);
     border: 5px solid #fff;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2), 0 2px 20px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 2px 10px #d1601481, 0 2px 15px #d1601481;
     overflow-y: hidden;
     overflow-x: auto;
     scroll-behavior: smooth;
@@ -451,10 +451,12 @@ body{
   .boxing{
     width: var(--slide-width);
     height: var(--slide-height);
+    padding: 20px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-color: rgb(233, 233, 233);
+    text-align: justify;
    
   }
 
@@ -492,8 +494,10 @@ body{
     position: relative;
     padding: 2%;
     font-size: 3em;
-    color: black;
-
+    color: var(--main-color);
+    font-family: 'Patua One', sans-serif;
+    font-weight: 700;
+    font-size: 1.75rem;
 }
 .categorytext{
 
@@ -504,7 +508,10 @@ body{
     position: relative;
     padding: 2%;
     font-size: 1.5em;
-    color: black;
+    color: var(--fourth-color);
+    font-family: 'Patua One', sans-serif;
+    font-weight: 200;
+    font-size: 1.2rem;
 }
 
 
@@ -515,7 +522,7 @@ body{
     align-items: center;
     position: relative;
     font-size: 5em;
-    color: #011627;
+    color: var(--main-color);
 
 }
 .icon-dots{
@@ -574,16 +581,24 @@ body{
   
   .ul-dots li .a-dots:hover::before {
     transform: scale(1.1);
-    box-shadow: 0 0 15px #fff;
+    box-shadow: 0 0 15px var(--main-color);
   }
   
   .ul-dots li .a-dots:hover {
-    color: #fff;
-    box-shadow: 0 0 5px #fff;
-    text-shadow: 0 0 5px #fff;
+    color: var(--main-color);
+    box-shadow: 0 0 5px var(--main-color);
+    text-shadow: 0 0 5px var(--main-color);
   }
   
-
+  @media (min-width: 768px) {
+    .titles{
+        font-size: 3em;
+    }
+    .categorytext{
+        font-size: 1.5em;
+    }
+}
+    
 
 
 

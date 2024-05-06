@@ -99,7 +99,7 @@ registerForm.addEventListener("submit", async (e) => {
 
   const data = await res.json();
   if (data.status === "ok") {
-    console.log('vamoos');
+    //console.log('vamoos');
     window.location.href = "/login";
   } else {
     alert(data.message);

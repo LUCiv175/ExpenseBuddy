@@ -32,7 +32,7 @@ const form = document.getElementById('form');
 if (form) {
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log(form);
+    //console.log(form);
     const formData = new FormData(form);
     const file = formData.get('file');
     formData.append('file', file); // Aggiungi il file all'oggetto FormData
