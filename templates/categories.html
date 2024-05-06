@@ -3,66 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleCategories.css') }}">
+    <link rel="icon" 
+      type="image/png" 
+      href="{{ url_for('static', filename='logo2.png') }}"/>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{url_for('static', filename='styleCategories.css')}}">
-    <title>Categories</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      
 </head>
-<body>
-    <nav>
-        <div class="logo">
-            <img src="{{ url_for('static', filename='logo.png') }}" alt="logo">
-        </div>  
-        <div class="user">
-            <img src="{{ url_for('static', filename='user.png') }}" alt="user">
+<body onload="loadCards()", onload="loaCatefories">
+    <div class="container">
+        
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon"><img src="{{ url_for('static', filename='logo2.png') }}" alt=""></span>
+                        <span class="title">ExpenseBuddy</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="add-outline"></ion-icon></span>
+                        <span class="title">Aggiungi Spesa</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="analytics-outline"></ion-icon></span>
+                        <span class="title">Grafici</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="albums-outline"></ion-icon></span>
+                        <span class="title">Categorie</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="download-outline"></ion-icon></span>
+                        <span class="title">Esporta Tabella</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                        <span class="title">Log Out</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-    </nav>
-
-    <div class="father">
-        <div class="sidebar">
-            <div class="top">
-                    <ul>
-                        <li><a href="{{ url_for('add') }}">Add Expense</a></li>
-                        <li><a href="{{ url_for('show') }}">Show Graph</a></li>
-                        <li><a href="{{ url_for('categories') }}" class="green-link">Categories</a></li>
-                        <li><a href="{{ url_for('export') }}">Export Table</a></li>
-                    </ul>
-            </div>
-            <div class="logout">
-                <a href="{{ url_for('index') }}">Logout</a>
-            </div>
-        </div>
-
-        <div class="container">
-            <h1>Categories</h1>
-            <div class="categoriesBlock">
-
-                <div class="categoriesTitle">
-                    <p>Meals</p>
-                    
+        
+        <div class="main">
+         
+         
+            
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
                 </div>
-                <div class="categoriesContents">
-                    <p>In this category, you can record all expenses related to meals, including lunches, dinners out, or grocery purchases. Keep track of your food expenses accurately to better manage your budget and find ways to save.</p>
-                </div>
-
-                <div class="categoriesTitle">
-                    <p>Transport</p>
-                    
-                </div>
-                <div class="categoriesContents">
-                    <p>In this category, you can record all expenses related to meals, including lunches, dinners out, or grocery purchases. Keep track of your food expenses accurately to better manage your budget and find ways to save.</p>
-                </div>
+                
+              
             </div>
 
-        </div>
+
+            <div class="slider-wrapper">
+                <div class="slider" id="slider"> </div>   
+            </div>
+
+            <ul class="ul-dots">
+                <li>
+                    <a  class="a-dots"  href="#slide-1">
+                        <i ><ion-icon name="pizza-outline"></ion-icon></i>
+                    </a>
+                </li>
+                <li>
+                    <a class="a-dots" href="#slide-2">
+                        <ion-icon name="car-sport-outline"></ion-icon>
+                    </a>
+                </li>
+                <li>
+                    <a class="a-dots" href="#slide-3">
+                        <ion-icon name="shirt-outline"></ion-icon>
+                    </a>
+                
+                </li>
+                <li>
+                    <a class="a-dots" href="#slide-4">
+                        <ion-icon name="medkit-outline"></ion-icon>
+                    </a> 
+                </li>
+            </ul>
+
+        
+
     </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 
-    
 
-    
-    
-    
-</body>
+
+<script src="{{ url_for('static', filename='navigation.js') }}"></script>
+<script src="{{ url_for('static', filename='categories.js') }}"></script>
 </body>
 </html>
