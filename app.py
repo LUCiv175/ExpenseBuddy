@@ -1,5 +1,7 @@
 import hashlib
-from flask import Flask, render_template, request, redirect, session, send_file
+import requests
+import json
+from flask import Flask, render_template, request, redirect, session, send_file, jsonify
 from openpyxl import Workbook
 import sqlite3 as sq
 from mindee import Client, PredictResponse, product
@@ -51,29 +53,23 @@ def scan_photo():
         os.makedirs(upload_folder)
     
     file.save(os.path.join(upload_folder, file.filename))
-
-    # Init a new client
-    mindee_client = Client(api_key=app.secret_key)
-
-    # Load a file from disk
     filepath = os.path.join(upload_folder, file.filename)
-    
-    input_doc = mindee_client.source_from_path(filepath)
-    # Load a file from disk and parse it.
-    # The endpoint name must be specified since it cannot be determined from the class.
-    result: PredictResponse = mindee_client.parse(product.ReceiptV5, input_doc)
 
-    # Print a summary of the API result
-    #print(result.document)
-    # Print the date
-    date = str(result.document.inference.prediction.date)
-    # Print the total amount
-    totalAmount = str(result.document.inference.prediction.total_amount)
-    #encode in json
-    data = {"date": date, "totalAmount": totalAmount}
-    #remove the image
-    os.remove(filepath)
-    return data
+    url = "https://api.mindee.net/products/expense_receipts/v2/predict" 
+    with open(filepath, "rb") as myfile: 
+        files = {"file": myfile} 
+        headers = {"X-Inferuser-Token": "5244a0cbfe280317e542e1c26d926277"} 
+        response = requests.post(url, files=files, headers=headers) 
+        json_data = response.text
+        data = json.loads(json_data)
+        # Print the total amount
+        date = str(data['predictions'][0]['date']['iso'])
+        totalAmount = str(data['predictions'][0]['total']['amount'])
+        #encode in json
+        data = {"date": date, "totalAmount": totalAmount}
+        #remove the image
+        os.remove(filepath)
+        return jsonify(data)
 
 
 @app.route('/')
@@ -203,7 +199,7 @@ def get_total_expense_monthly():
         cursor.execute(query)
         data = cursor.fetchall()
         db.close()
-    return data
+    return jsonify(data)
 
 @app.route("/totalExpensesYearly", methods=['GET'])
 def get_total_expense_yearly():
@@ -217,7 +213,7 @@ def get_total_expense_yearly():
         cursor.execute(query)
         data = cursor.fetchall()
         db.close()
-    return data
+    return jsonify(data)
 
 @app.route("/totalExpensesbyYearandMonth", methods=['GET'])
 def get_total_expense_by_year_and_month():
@@ -231,7 +227,7 @@ def get_total_expense_by_year_and_month():
         cursor.execute(query)
         data = cursor.fetchall()
         db.close()
-        return data
+        return jsonify(data)
 
 
 
@@ -247,7 +243,7 @@ def get_total_expense():
         cursor.execute(query)
         data = cursor.fetchall()
         db.close()
-        return data
+        return jsonify(data)
 
 @app.route("/numberExpenses", methods=['GET'])
 def get_number_expense():
@@ -261,7 +257,7 @@ def get_number_expense():
         cursor.execute(query)
         data = cursor.fetchall()
         db.close()
-        return data
+        return jsonify(data)
 
 @app.route("/lastExpenses", methods=['GET'])
 def get_last_expense():
@@ -276,7 +272,7 @@ def get_last_expense():
         data = cursor.fetchall()
         db.close()
         print(id)
-        return data
+        return jsonify(data)
 @app.route("/viewAll", methods=['GET'])
 def get_all_expense():
     if 'user' not in session:
@@ -291,8 +287,9 @@ def get_all_expense():
         db.close()
         #lista note speses
         dati_note_spese = data
-        return data
+        return jsonify(data)
     
+
 @app.route("/getCategorie", methods=['GET'])
 def get_categorie():
     db = sq.connect("data.db")
@@ -300,7 +297,9 @@ def get_categorie():
     cursor.execute("SELECT * FROM categoria")
     data = cursor.fetchall()
     db.close()
-    return data
+    # Convert data to JSON and return
+    return jsonify(data)
+
 
 @app.route("/logout", methods=['GET'])
 def logout():
