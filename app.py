@@ -1,6 +1,5 @@
 import hashlib
 from flask import Flask, render_template, request, redirect, session, send_file
-from flask_session import Session
 from openpyxl import Workbook
 import sqlite3 as sq
 from mindee import Client, PredictResponse, product
@@ -8,8 +7,7 @@ import os;
 
 app = Flask(__name__)
 
-app.config['SESSION_TYPE'] = 'filesystem'
-Session(app)
+app.secret_key = '73bd852143af96b381144e4a359c969'
 
 dati_note_spese = []  # Definizione della variabile globale per le note spese
 
@@ -55,7 +53,7 @@ def scan_photo():
     file.save(os.path.join(upload_folder, file.filename))
 
     # Init a new client
-    mindee_client = Client(api_key="")
+    mindee_client = Client(api_key=app.secret_key)
 
     # Load a file from disk
     filepath = os.path.join(upload_folder, file.filename)
