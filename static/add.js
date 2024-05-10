@@ -20,8 +20,6 @@ const loadCategories = () => {
     if (inputDate && inputCosto) {
         document.getElementById('data').value = inputDate;
         document.getElementById('costo').value = inputCosto;
-        document.getElementById('data').readOnly = true;
-        document.getElementById('costo').readOnly = true;
         localStorage.removeItem('inputDate');
         localStorage.removeItem('inputCosto');
     }
